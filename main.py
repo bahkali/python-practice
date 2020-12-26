@@ -4,6 +4,7 @@ import random
 #from utility import divide
 import shopping.shopping_cart
 from shopping.shopping_cart import buy
+from guessgame.guess import guessNumber
 
 print(utility.divide(180, 20))
 print(shopping.shopping_cart.buy('apple'))
@@ -15,4 +16,4 @@ print(my_list)
 first = sys.argv[1]
 last = sys.argv[2]
 
-print(f'Hello {first} {last}')
+guessNumber(int(first), int(last))
