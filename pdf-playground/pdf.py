@@ -1,12 +1,27 @@
 import PyPDF2
+import sys
 # You can look in the documentation to 
 
-with open('twopage.pdf','rb') as file:
-    reader = PyPDF2.PdfFileReader(file)
-    page = reader.getPage(0)
-    print(page.rotateCounterClockwise(90))
-    writer = PyPDF2.PdfFileWriter()
-    writer.addPage(page)
-    with open('tilt.pdf', 'wb') as new_file:
-        writer.write(new_file)
+## Tilt and save pdf file to new pdf
+# with open('twopage.pdf','rb') as file:
+#     reader = PyPDF2.PdfFileReader(file)
+#     page = reader.getPage(0)
+#     print(page.rotateCounterClockwise(90))
+#     writer = PyPDF2.PdfFileWriter()
+#     writer.addPage(page)
+#     with open('tilt.pdf', 'wb') as new_file:
+#         writer.write(new_file)
 
+# How to combine pdf to a superpdf from the command line
+
+
+inputs = sys.argv[1:] # capture everything after py filename.py
+
+def pdf_combiner(pdf_list):
+    merger = PyPDF2.PdfFileMerger()
+    for pdf in pdf_list:
+        print(pdf)
+        merger.append(pdf)
+    merger.write('super.pdf')
+
+pdf_combiner(inputs)
